@@ -34,7 +34,7 @@
 
 dr1  = 
 #add the path to your external sample directory... easiest way is to drag-n-drop the sample here 
-#after  "dr1 =" and sonic pi will write the path for you eg "you path to the sample"
+#after  "dr1 =" and sonic pi will write the path for you eg "your path to the sample"
 
 use_bpm 180
 
@@ -100,7 +100,7 @@ end
   
   in_thread do
     28.times do
-      sample dr1, "new5", amp: 5
+      sample dr1, amp: 5
       sleep 8
     end
     sample :ambi_dark_woosh
