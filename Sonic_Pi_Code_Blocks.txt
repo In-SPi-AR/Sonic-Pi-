@@ -1,32 +1,54 @@
-notes = (scale :c4, :major)
+#Each block of code/live_loop is a separate piece.
+#Copy each one separately into a buffer, run the code and explore. Try adding new live_loops to play along with
+#The block you are testing.
+#There are lots of ways/procedure that do the same thing and more elegantly but the following
+#examples are just for a bit of fun with numbers and operations to explore maths and music.
+
+#1 This uses the remainder of a division operation to tick through a ring of notes found in a given scale call
+notes = (scale :c4, :major) # define the variable and assign the (scale :c, :major) procedure. Change the scale name and type 
 live_loop :number_line_music do
   index = tick
   play notes[index % notes.length]
   sleep 0.5
 end
+#1a This is the same thing pretty much but without the number opererations. It's more elegant. 
+notes = (scale :c4, :major)
+live_loop :number_line_music do
+  play notes.tick
+  sleep 0.5
+end
 
+#2 Explore intervals used for scales.. 
 major_intervals = [0, 2, 4, 5, 7, 9, 11, 12]
 base_note = :c3
-
 live_loop :scale_builder do
   interval = major_intervals.tick
   play base_note + interval
   sleep 0.5
 end
-
+#2a
+minor_intervals = [0, 1, 3, 5, 7, 8, 11, 12]
+base_note = :c3
+live_loop :scale_builder do
+  interval = minor_intervals.tick
+  play base_note + interval
+  sleep 0.5
+end
+#3 Caution... this one keeps ascending in pitch until you stop the loop... or specify how many repeats eg 12.times do ... end
 live_loop :exponential_scale do
   step = tick
   freq = 60 * (2 ** (step / 12.0))
   play hz_to_midi(freq)
   sleep 0.5
 end
-
+#4 Fibonacci Numberer
 fib = [0, 1, 1, 2, 3, 5, 8, 13, 21]
 live_loop :fib_notes do
   play :c2 + fib.tick
   sleep 0.5
 end
-
+#5 Just for a fun sfx that could be added to game audio in Scratch or somethin eles after recoding to wav file. 
+#After recording, you have created your own sample in wav file format. Of course this can be done for all Sonic Pi files.
 live_loop :game_fx do
   sample :elec_blip, rate: [1, 1.5, 2, 0.5].tick
   sleep 0.25
