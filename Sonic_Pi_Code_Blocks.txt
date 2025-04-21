@@ -1,0 +1,33 @@
+notes = (scale :c4, :major)
+live_loop :number_line_music do
+  index = tick
+  play notes[index % notes.length]
+  sleep 0.5
+end
+
+major_intervals = [0, 2, 4, 5, 7, 9, 11, 12]
+base_note = :c3
+
+live_loop :scale_builder do
+  interval = major_intervals.tick
+  play base_note + interval
+  sleep 0.5
+end
+
+live_loop :exponential_scale do
+  step = tick
+  freq = 60 * (2 ** (step / 12.0))
+  play hz_to_midi(freq)
+  sleep 0.5
+end
+
+fib = [0, 1, 1, 2, 3, 5, 8, 13, 21]
+live_loop :fib_notes do
+  play :c2 + fib.tick
+  sleep 0.5
+end
+
+live_loop :game_fx do
+  sample :elec_blip, rate: [1, 1.5, 2, 0.5].tick
+  sleep 0.25
+end
