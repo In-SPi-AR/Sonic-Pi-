@@ -2,6 +2,8 @@
 Here you'll find the Play 60 Sonic Pi source files for the DayTime 25 MusicEdNet conference.
 Included are the coded audio files in *.rb file format and required additonal samples in *.wav format.
 
+Also note that the Play60_SonicPi Tracks and File have more files that are ready for Sonic Pi. Please ensure you follow the ReadMe instructions to help with set paths to external samples...
+
 Not all Sonic pi files need additional samples but I have included the extra wavs required for the files that need them.
 
 You will need to download the *.rb files and related addtional *.wav files.
